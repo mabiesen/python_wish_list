@@ -7,7 +7,7 @@ List containing functionalities I would like to have, either through building or
 Some of these I already have, some I do not.  Strike throughs indicate partially complete, bold strike throughs fully complete.
 
 1. Get GPS coordinates from address
-2 ~~Send email, retrieve email from inboxes~~
+2. ~~Send email, retrieve email from inboxes~~
 3. Interact with databases: mysql, sqlite, mongo(with included json conversion), etc.
 4. voip phone
 5. ~~TCP communication~~
