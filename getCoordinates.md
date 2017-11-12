@@ -1,3 +1,3 @@
-NO NEED TO REWRITE THE WHEEL
+NO NEED TO WRITE MY OWN
 
 https://github.com/googlemaps/google-maps-services-python
