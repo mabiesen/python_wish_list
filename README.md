@@ -18,7 +18,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 10. Program to find libraries and add them to the selected project (search for an add import statements, place libraries in proper directory.
 11. Personalized wrappers for sql and json
 12. Social media: facebook, linkedin, wechat(?), twitter
-13. Read and write to txt, csv
+13. Read and write to txt, csv ( including any necessary unicode conversions, etc)
 14. 
 
 ### Skills to Advance
