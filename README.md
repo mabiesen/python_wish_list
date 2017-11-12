@@ -17,7 +17,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 9. Basic work with IRC
 10. Program to find libraries and add them to the selected project (search for an add import statements, place libraries in proper directory.
 11. Personalized wrappers for sql and json
-12. Wrapper for facebook interaction
+12. Social media: facebook, linkedin, wechat(?), twitter
 13. Read and write to txt, csv
 14. 
 
@@ -32,4 +32,12 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 1. Script automated connection testing / problem idenification.
 2. Script
 
-### Qpython sciprts
+### Qpython scripts
+
+1. 
+
+
+### Just good fun
+
+1. Python library of interesting things to do in minecraft for Raspberry Pi
+2. 
