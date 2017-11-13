@@ -8,7 +8,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 
 1. **~~Get GPS coordinates from address~~**
 2. ~~Send email, retrieve email from inboxes~~
-3. Interact with databases: mysql, sqlite, mongo(with included json conversion as its always necessary), etc.
+3. Interact with databases: mysql, **~~sqlite~~**, mongo(with included json conversion as its always necessary), etc.
 4. voip phone
 5. ~~TCP communication~~
 6. Internet connection testing
