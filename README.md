@@ -16,7 +16,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 8. SSH, including copy functionalities
 9. Basic work with IRC
 10. Program to find libraries and add them to the selected project (search for an add import statements, place libraries in proper directory.
-11. Personalized wrappers for sql and json
+11. Personalized wrappers for xml and json
 12. Social media: facebook, linkedin, wechat(?), twitter
 13. Read and write to txt, csv ( including any necessary unicode conversions, etc)
 14. 
