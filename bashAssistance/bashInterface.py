@@ -1,5 +1,6 @@
 ## relevant websites
 ## https://medium.com/capital-one-developers/bashing-the-bash-replacing-shell-scripts-with-python-d8d201bc0989
+## http://www.mervine.net/executing-bash-from-python
 
 import subprocess
 import psutil
