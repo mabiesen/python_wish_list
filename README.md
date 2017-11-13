@@ -19,7 +19,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 11. Personalized wrappers for xml and json
 12. Social media: facebook, linkedin, wechat(?), twitter
 13. Read and write to txt, csv ( including any necessary unicode conversions, etc)
-14. 
+14. Common Bash assistance library
 
 ### Skills to Advance
 
