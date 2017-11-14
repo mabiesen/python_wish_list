@@ -9,6 +9,7 @@
 
 import subprocess
 import psutil
+import os
 
 class BashHelper:
 
@@ -44,4 +45,18 @@ class BashHelper:
             proc.kill()
         except psutil.NoSuchProcess as ex:
             print("No such process")
+            
+    def script_directory_path():
+        mypath = os.path.dirname(os.path.realpath(__file__))
+        return mypath
+    
+    def all_directory_files(directory):
+        filelist = []
+        for filename in os.listdir(directory):
+            full_filepath = os.path.join(directory, filename)
+            filelist.append(full_filepath)
+        return filelist
+    
+    def destroy_file(filename):
+        os.remove(filename)
 
