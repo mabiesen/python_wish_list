@@ -69,7 +69,7 @@ class HtmlHelper:
             thishtml = get_links_and_linktext_from_hml(thishtml, listfind[i])
 
         i += 1
-                                                       
+      return thishtml                                        
                                                        
       
  
