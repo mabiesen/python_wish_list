@@ -18,7 +18,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 10. Personalized wrappers for xml and json
 11. Social media: facebook, linkedin, wechat(?), twitter
 12. ~~Read and write to txt, csv ( including any necessary unicode conversions, etc)~~
-13. Common Bash assistance library
+13. ~~Common Bash assistance library~~
 14. Retry script:  pass function and number of tries or time to a function that recurs if error.
 
 ### Skills to Advance
