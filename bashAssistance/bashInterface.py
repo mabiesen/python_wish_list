@@ -7,73 +7,59 @@
 ## 2. Execute commands no output
 ## 3. Identify processes
 
+## NOTE:  psutil not properly installing in cygwin, removed for now
+
 import subprocess
-import psutil
 import os
 import pexpect
 
 class BashHelper:
 
-    def __init__():
+    def __init__(self):
         print("bash helper initialized")
 
-    def run_commands_from_list(commandlist):
+    def run_commands_from_list(self, commandlist):
         ## open file, read and execute line by line, return output
         returnlist = []
         for i in commandlist:
-            returnlist.append(self.runBashCommand(i))
+            returnlist.append(self.run_bash_command(i))
         return returnlist
         
-    def run_bash_command(bashCommand):
+    def run_bash_command(self, bashCommand):
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
         if len(output) < 1:
             output = "none"
         return output
-
-    def kill_process(pidfile_path):
-        try:
-            pid = int(pidfile_path.read_text())
-        except FileNotFoundError:
-            print("Process file does not exist")
-            return
-        except ValueError:
-            print("Invalid input")
-
-        try:
-            proc=psutil.Process(pid)
-            print("Killing", proc.name())
-            proc.kill()
-        except psutil.NoSuchProcess as ex:
-            print("No such process")
             
-    def script_directory_path():
+    def script_directory_path(self):
         mypath = os.path.dirname(os.path.realpath(__file__))
         return mypath
     
-    def all_directory_files(directory):
+    def all_directory_files(self, directory):
         filelist = []
         for filename in os.listdir(directory):
             full_filepath = os.path.join(directory, filename)
             filelist.append(full_filepath)
         return filelist
     
-    def destroy_file(filename):
-        os.remove(filename)
+    def destroy_file(self, fullfilename):
+        os.remove(fullfilename)
         
         
     ## check if file exists
     
     
     ## check if directory exists
-    def scp_multiple_files(filelist, ipaddr, user, password):
+        
+    def scp_multiple_files(self, filelist, ipaddr, user, password):
         for i in filelist:
-            scp_file(i, ipaddr, user, password)
+            self.scp_file(i, ipaddr, user, password)
     
-    def scp_file(fullfilepath, ipaddr, user, password):
+    def scp_file(self, fullfilepath, ipaddr, user, password):
         filename, filedir = os.path.split(fullfilepath)
         child = pexpect.spawn ('ftp ' + ipaddr)
-        child.expect ('Name .*: ')
+        child.expect ("User " + "(" + ipaddr + ":(none)):")
         child.sendline (user)
         child.expect ('Password:')
         child.sendline (password)
