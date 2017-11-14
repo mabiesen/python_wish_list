@@ -35,10 +35,10 @@ class GmailHelper:
           
           
          
-  def read_email_from_gmail():
+  def read_email_from_gmail(self):
     try:
       mail = imaplib.IMAP4_SSL(SMTP_SERVER)
-      mail.login(FROM_EMAIL,FROM_PWD)
+      mail.login(self.gmailuser,self.gmailpassword)
       mail.select('inbox')
 
       type, data = mail.search(None, 'ALL')
