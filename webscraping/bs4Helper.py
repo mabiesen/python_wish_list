@@ -8,55 +8,63 @@ import bs4
 
 class HtmlHelper:
     
-    def __init__():
-        print("HtmlHelper initialized")
+    mysoup = ""
     
-    def get_links_and_linktext_from_html(stringhtml):
+    def __init__(htmlstring):
+        print("HtmlHelper initialized")
+        set_soup(hmtmlstring)
+        
+    def set_soup(self, htmlstring):
+        self.mysoup = bs4.BeautifulSoup(htmlstring)
+    
+    def get_links_and_linktext_from_html(self, stringhtml):
         thisdict = {}
-        for link in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer('a')):
+        for item in self.mysoup:
             if link.has_attr('href'):
                 thisdict[link.text] = link['href']
-        return thisdict
+        self.mysoup = thisdict
     
-    def get_links_from_html(stringhtml):
+    def get_links_from_html(self):
         thislist = []
-        for link in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer('a')):
+        for link in :
             if link.has_attr('href'):
                 thislist.append(link['href'])
-        return thislist
+        self.mysoup = thislist
     
-    def get_elems_from_html(stringhtml, findel):
+    def get_elems_from_html(findel):
         elemlist = []
         for myelem in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer(findel)):
             elemlist.append(myelem)
-        return elemlist
+        self.mysoup = elemlist
 
      ## Get class items from html
-    def get_classes_from_html(stringhtml, findclass):
+    def get_classes_from_html(self, findclass):
         soup = bs4.BeautifulSoup(stringhtml)
         items = soup.findAll(True,{'class':findclass})
-        return items
+        self.mysoup = items
         
         
      ## Get ID from html
-    def get_ids_from_html(stringhtml, findid):
+    def get_ids_from_html(self, findid):
         soup = bs4.BeautifulSoup(stringhtml)
         items = soup.findAll(True,{'id':findid})
-        return items
+        self.mysoup = items
 
 
     ## this will error control, pass arguments to function switch
     
-    def html_search_several(listexecute, listfind, thishtml):
+    def html_search_several(listexecute, listfind, thishtml=""):
+        if thishtml != "":
+            set_soup(thishtml)
         if len(listexecute) != len(listfind):
-            return "error"
+            return "err"
         else:
-            return function_switch(listexecute, listfind, thishtml)
+            return function_switch(listexecute, listfind)
     
     
      ## Function switch
 
-    def function_switch(listexecute, listfind, thishtml):
+    def function_switch(self, listexecute, listfind):
         ## each time around, html represents another level of depth
         ## end result is item, list of items, or dict
         ## NOTE: dict must control for dupllicates
@@ -64,21 +72,19 @@ class HtmlHelper:
       i=0
       for i < len(listexecute):
         if listFind[i] == "class":
+            get_classes_from_html(listfind[i])
 
         if listFind[i] == "id":
-            thishtml = get_ids_from_html(
+            get_ids_from_html(listfind[i])
 
         if listFind[i] == "elems":
-            thishtml = get_elems_from_html(thishtml, listfind[i])
+            get_elems_from_html(listfind[i])
 
         if listFind[i] == "link":  ## defined as 'a' and 'href'.  Commonly used so allowing this high level method
-            thishtml = get_links_from_html(thishtml)
-            
-        if listFind[i] == "linkandtext":
-            thishtml = get_links_and_linktext_from_hml(thishtml, listfind[i])
+            get_links_from_html()
 
         i += 1
-      return thishtml                                        
+      return self.mysoup                                        
                                                        
       
  
