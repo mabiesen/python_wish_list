@@ -6,7 +6,7 @@
 
 import bs4
 
-class HtmlHelper:
+class BasicHtmlHelper:
     
     mysoup = ""
     
