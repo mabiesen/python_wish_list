@@ -29,23 +29,22 @@ class BasicHtmlHelper:
         for link in self.mysoup.findAll('a'):
             if link.has_attr('href'):
                 thislist.append(link['href'])
-        self.mysoup = thislist
-        return self.mysoup
+        return thislist
     
-    def get_elems_from_html(findel):
-        self.mysoup = self.mysoup.findAll(findel)
-        return self.mysoup
+    def get_elems_from_html(self,findel):
+        myreturn = self.mysoup.findAll(findel)
+        return myreturn
 
      ## Get class items from html
     def get_classes_from_html(self, findclass):
-        self.mysoup = soup.findAll(True,{'class':findclass})
-        return self.mysoup
+        myreturn = self.mysoup.findAll(True,{'class':findclass})
+        return myreturn
         
         
      ## Get ID from html
     def get_ids_from_html(self, findid):
-        self.mysoup = soup.findAll(True,{'id':findid})
-        return self.mysoup
+        myreturn = self.mysoup.findAll(True,{'id':findid})
+        return myreturn
 
 
     ## this will error control, pass arguments to function switch
