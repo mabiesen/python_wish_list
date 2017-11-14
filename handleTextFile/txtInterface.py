@@ -11,12 +11,26 @@ def readToArray(filename):
   return fh.readlines()
 
 ## write file from array
+def writeLineByLine(filename, data):
+  fh = open(filename, "w")
+  fh.writelines(data)
+  fh.close()
 
 ## write file in whole
 def writeWhole(filename, data):
   fh = open(filename,"w")
   write(data)
   fh.close()
+  
+def appendLineByLine(filename, data):
+  fh = open(filename, "a")
+  fh.writelines(data)
+  fh.close
+  
+def appendWhole(filename, data):
+  fh = open(filename, "a")
+  fh.write(data)
+  fh.close
 
 ## grep file for words: bool
 def findWordBool(filename, mymatch):
@@ -31,9 +45,9 @@ def findWordLine(filename, mymatch):
     if mymatch in thisline:
       returnarray.append(thisline)
   return returnarray
-## append to file
 
 ## delete all from file
-
+def deleteFileData(filename):
+  writeWhole(filename, "")
 
 
