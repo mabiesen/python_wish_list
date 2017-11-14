@@ -52,6 +52,8 @@ class HtmlHelper:
         if listFind[i] == "id":
 
         if listFind[i] == "elem":
+            
+        if listFind[i] == "elemwithclass"
 
         if listFind[i] == "link":  ## defined as 'a' and 'href'.  Commonly used so allowing this high level method
             
