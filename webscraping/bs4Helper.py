@@ -17,13 +17,6 @@ class HtmlHelper:
             if link.has_attr('href'):
                 thisdict[link.text] = link['href']
         return thisdict
-
-    def get_elems_fromhtml(stringhtml):
-        thislist = []
-        for link in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer('a')):
-            if link.has_attr('href'):
-                thislist.append(link['href'])
-        return thislist
     
     def get_links_from_html(stringhtml):
         thislist = []
