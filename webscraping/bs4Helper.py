@@ -17,6 +17,7 @@ class HtmlHelper:
     def set_soup(self, htmlstring):
         self.mysoup = bs4.BeautifulSoup(htmlstring)
     
+    ## lowest level, returns dict, NOT ALLOWED IN SWITCH
     def get_links_and_linktext_from_html(self):
         thisdict = {}
         for item in self.mysoup:
