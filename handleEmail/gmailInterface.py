@@ -10,11 +10,9 @@ class GmailHelper:
     self.gmailuser = user
     self.gmailpassword = password
 
-  def send_email(user, pwd, recipient, subject, body):
+  def send_email(self, recipient, subject, body):
       import smtplib
 
-      gmail_user = user
-      gmail_pwd = pwd
       FROM = user
       TO = recipient if type(recipient) is list else [recipient]
       SUBJECT = subject
@@ -27,7 +25,7 @@ class GmailHelper:
           server = smtplib.SMTP("smtp.gmail.com", 587)
           server.ehlo()
           server.starttls()
-          server.login(gmail_user, gmail_pwd)
+          server.login(self.gmailuser, self.gmailpassword)
           server.sendmail(FROM, TO, message)
           server.close()
           print 'successfully sent the mail'
