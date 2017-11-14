@@ -59,6 +59,12 @@ class UseSqlite:
 
         finally:
             self.closeConnection()
+            
+    def getTableHeaders(self, mytable):
+        sqlstatement = "Select * from " + mytable + ";"
+        row = self.retrieveOneRow(sqlstatement)
+        names = row.keys()
+        return names
 
     def insertFullRows(self, tablename, myrowslistoftuples):
         ## should allow for 1 row or multiple
