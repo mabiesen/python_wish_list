@@ -59,4 +59,10 @@ class BashHelper:
     
     def destroy_file(filename):
         os.remove(filename)
+        
+        
+    ## check if file exists
+    
+    
+    ## check if directory exists
 
