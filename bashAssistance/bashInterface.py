@@ -66,7 +66,9 @@ class BashHelper:
     
     
     ## check if directory exists
-    
+    def scp_multiple_files(filelist, ipaddr, user, password):
+        for i in filelist:
+            scp_file(i, ipaddr, user, password)
     
     def scp_file(fullfilepath, ipaddr, user, password):
         filename, filedir = os.path.split(fullfilepath)
