@@ -56,6 +56,7 @@ class BashHelper:
         for i in filelist:
             self.scp_file(i, ipaddr, user, password)
     
+    ## NOTE:  FTP did not work, try with scp
     def scp_file(self, fullfilepath, ipaddr, user, password):
         filename, filedir = os.path.split(fullfilepath)
         child = pexpect.spawn ('ftp ' + ipaddr)
