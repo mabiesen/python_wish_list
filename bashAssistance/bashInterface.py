@@ -66,4 +66,18 @@ class BashHelper:
     
     
     ## check if directory exists
-
+    
+    
+    def scp_file(fullfilepath, ipaddr, user, password):
+       filename, filedir = os.path.split(fullfilepath)
+       child = pexpect.spawn ('ftp ' + ipaddr)
+       child.expect ('Name .*: ')
+       child.sendline (user)
+       child.expect ('Password:')
+       child.sendline (password)
+       child.expect ('ftp> ')
+       child.sendline ('cd ' + filedir)
+       child.expect('ftp> ')
+       child.sendline ('get ' + filename)
+       child.expect('ftp> ')
+       child.sendline ('bye')
