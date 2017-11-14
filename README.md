@@ -8,7 +8,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 
 1. **~~Get GPS coordinates from address~~**
 2. ~~Send email, retrieve email from inboxes~~ , get IP and location of sender
-3. Interact with databases: mysql, **~~sqlite~~**, mongo(with included json conversion as its always necessary), etc.
+3. Interact with databases: mysql, ~~sqlite~~, mongo(with included json conversion as its always necessary), etc.
 4. voip phone
 5. ~~TCP communication~~
 6. Internet connection testing
@@ -18,7 +18,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 10. Program to find libraries and add them to the selected project (search for an add import statements, place libraries in proper directory.
 11. Personalized wrappers for xml and json
 12. Social media: facebook, linkedin, wechat(?), twitter
-13. Read and write to txt, csv ( including any necessary unicode conversions, etc)
+13. ~~Read and write to txt, csv ( including any necessary unicode conversions, etc)~~
 14. Common Bash assistance library
 
 ### Skills to Advance
