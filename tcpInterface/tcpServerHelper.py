@@ -1,6 +1,6 @@
+
 import socket
 import threading
-import server_manage_client_input
 
 def start_server():
 	bind_ip = "0.0.0.0"
@@ -13,10 +13,8 @@ def start_server():
 	print("[*] Listening on %s:%d" % (bind_ip, bind_port))
 
 	#send back strings to client
-	#server_manage_client_input determines what to do with a request.
 	def reply_to_client(client_socket, request):
-		success = server_manage_client_input.redirect_user_input(request)
-		client_socket.send(success)
+		client_socket.send("received")
 		client_socket.close()
 
 
