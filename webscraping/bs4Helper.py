@@ -31,6 +31,12 @@ class HtmlHelper:
             if link.has_attr('href'):
                 thislist.append(link['href'])
         return thislist
+    
+    def get_elems_from_html(stringhtml, findel):
+        elemlist = []
+        for myelem in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer(findel)):
+            elemlist.append(myelem)
+        return elemlist
 
      ## Get class items from html
 
