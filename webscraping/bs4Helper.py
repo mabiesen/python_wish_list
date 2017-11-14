@@ -20,13 +20,13 @@ class BasicHtmlHelper:
     ## lowest level, returns dict, NOT ALLOWED IN SWITCH
     def get_links_and_linktext_from_html(self):
         thisdict = {}
-        for item in self.mysoup:
+        for item in self.mysoup.findAll('a'):
             if link.has_attr('href'):
                 thisdict[link.text] = link['href']
         return thisdict
     
     def get_links_from_html(self):
-        for link in self.mysoup:
+        for link in self.mysoup.findAll('a'):
             if link.has_attr('href'):
                 thislist.append(link['href'])
         self.mysoup = thislist
@@ -77,9 +77,6 @@ class BasicHtmlHelper:
 
         if listFind[i] == "elem":
             burner = get_elems_from_html(listfind[i])
-
-        if listFind[i] == "link":  ## defined as 'a' and 'href'.  Commonly used so allowing this high level method
-            burner = get_links_from_html()
 
         i += 1
       return self.mysoup                                        
