@@ -16,21 +16,21 @@ class BashHelper:
     def __init__():
         print("bash helper initialized")
 
-    def runCommandsFromListReturnOutput(commandlist):
+    def run_commands_from_list(commandlist):
         ## open file, read and execute line by line, return output
         returnlist = []
         for i in commandlist:
             returnlist.append(self.runBashCommand(i))
         return returnlist
         
-    def runBashCommand(bashCommand):
+    def run_bash_command(bashCommand):
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
         if len(output) < 1:
             output = "none"
         return output
 
-    def killProcess(pidfile_path):
+    def kill_process(pidfile_path):
         try:
             pid = int(pidfile_path.read_text())
         except FileNotFoundError:
