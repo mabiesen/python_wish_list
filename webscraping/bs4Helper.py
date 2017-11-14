@@ -32,8 +32,9 @@ class HtmlHelper:
         return elemlist
 
      ## Get class items from html
-
-
+    def get_classes_from_html(stringhtml, findclass):
+        soup = bs4.BeautifulSoup(stringhtml)
+        items = soup.findAll(True,{'class':findclass})
      ## Get ID from html
 
 
@@ -63,7 +64,7 @@ class HtmlHelper:
             thishtml = get_elems_from_html(thishtml, listfind[i])
 
         if listFind[i] == "link":  ## defined as 'a' and 'href'.  Commonly used so allowing this high level method
-            thishtml = get_links_from_html(thishtml, listfind[i])
+            thishtml = get_links_from_html(thishtml)
             
         if listFind[i] == "linkandtext":
             thishtml = get_links_and_linktext_from_hml(thishtml, listfind[i])
