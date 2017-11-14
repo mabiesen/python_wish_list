@@ -10,6 +10,7 @@
 import subprocess
 import psutil
 import os
+import pexpect
 
 class BashHelper:
 
