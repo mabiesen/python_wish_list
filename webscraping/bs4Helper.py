@@ -46,28 +46,37 @@ class HtmlHelper:
 
      ## Get elements with class from html
     def get_elems_with_class(myelem, classname):
-        mydivs = soup.findAll(myelem, { "class" : classname })
-        return mydivs
+      mydivs = soup.findAll(myelem, { "class" : classname })
+      return mydivs
 
 
      ## Function switch
 
-    def functionSwitch(listFind, listLevel):
+    def functionSwitch(listexecute, listfind, thishtml):
+        ## each time around, html represents another level of depth
+        ## end result is item, list of items, or dict
+        ## NOTE: dict must control for dupllicates
       i=0
-      for i < listlevel:
+      for i < len(listexecute):
         if listFind[i] == "class":
 
         if listFind[i] == "id":
 
-        if listFind[i] == "elem":
+        if listFind[i] == "elems":
+            thishtml = get_elems_from_html(thishtml, listfind[i])
             
-        if listFind[i] == "elemwithclass"
+        if listFind[i] == "elemswithclass"
+            thishtml = get_elems_with_class(thishtml, listfind[i])
 
         if listFind[i] == "link":  ## defined as 'a' and 'href'.  Commonly used so allowing this high level method
+            thishtml = get_links_from_html(thishtml, listfind[i])
             
-        if listFind[i] == "linkandtext"
+        if listFind[i] == "linkandtext":
+            thishtml = get_links_and_linktext_from_hml(thishtml, listfind[i]
 
         i += 1
+                                                       
+                                                       
       
  
  
