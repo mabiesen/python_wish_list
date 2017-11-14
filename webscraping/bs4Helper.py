@@ -68,13 +68,13 @@ class BasicHtmlHelper:
       burner = ""
       i=0
       for i < len(listexecute):
-        if listFind[i] == "class":
+        if listExecute[i] == "class":
             burner = get_classes_from_html(listfind[i])
 
-        if listFind[i] == "id":
+        if listExecute[i] == "id":
             burner = get_ids_from_html(listfind[i])
 
-        if listFind[i] == "elem":
+        if listExecute[i] == "elem":
             burner = get_elems_from_html(listfind[i])
 
         i += 1
