@@ -39,7 +39,7 @@ class HtmlHelper:
         
         
      ## Get ID from html
-    def get_classes_from_html(stringhtml, findid):
+    def get_ids_from_html(stringhtml, findid):
         soup = bs4.BeautifulSoup(stringhtml)
         items = soup.findAll(True,{'id':findid})
         return items
@@ -60,11 +60,13 @@ class HtmlHelper:
         ## each time around, html represents another level of depth
         ## end result is item, list of items, or dict
         ## NOTE: dict must control for dupllicates
+        ## NOTENOTENOTE:  MUST MAKE SOUP CLASSLEVEL, FIRST TURN TO Soup Then Run through
       i=0
       for i < len(listexecute):
         if listFind[i] == "class":
 
         if listFind[i] == "id":
+            thishtml = get_ids_from_html(
 
         if listFind[i] == "elems":
             thishtml = get_elems_from_html(thishtml, listfind[i])
