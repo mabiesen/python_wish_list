@@ -60,6 +60,6 @@ class GmailHelper:
               print 'From : ' + email_from + '\n'
               print 'Subject : ' + email_subject + '\n'
 
-  except Exception, e:
-    print str(e)
+    except Exception, e:
+      print str(e)
     
