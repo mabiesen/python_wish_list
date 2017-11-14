@@ -35,8 +35,12 @@ class HtmlHelper:
     def get_classes_from_html(stringhtml, findclass):
         soup = bs4.BeautifulSoup(stringhtml)
         items = soup.findAll(True,{'class':findclass})
+        
+        
      ## Get ID from html
-
+    def get_classes_from_html(stringhtml, findid):
+        soup = bs4.BeautifulSoup(stringhtml)
+        items = soup.findAll(True,{'id':findid})
 
 
     ## this will error control, pass arguments to function switch
