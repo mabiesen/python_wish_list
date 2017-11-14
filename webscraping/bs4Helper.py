@@ -44,8 +44,10 @@ class HtmlHelper:
      ## Get ID from html
 
 
-     ## Get elements from html
-
+     ## Get elements with class from html
+    def get_elems_with_class(myelem, classname):
+        mydivs = soup.findAll(myelem, { "class" : classname })
+        return mydivs
 
 
      ## Function switch
