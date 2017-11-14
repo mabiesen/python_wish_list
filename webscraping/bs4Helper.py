@@ -7,6 +7,10 @@
 import bs4
 
 class HtmlHelper:
+    
+    def __init__():
+        print("HtmlHelper initialized")
+    
     def get_links_and_linktext_from_html(stringhtml):
         thisdict = {}
         for link in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer('a')):
@@ -14,6 +18,13 @@ class HtmlHelper:
                 thisdict[link.text] = link['href']
         return thisdict
 
+    def get_elems_fromhtml(stringhtml):
+        thislist = []
+        for link in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer('a')):
+            if link.has_attr('href'):
+                thislist.append(link['href'])
+        return thislist
+    
     def get_links_from_html(stringhtml):
         thislist = []
         for link in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer('a')):
@@ -43,6 +54,8 @@ class HtmlHelper:
         if listFind[i] == "elem":
 
         if listFind[i] == "link":  ## defined as 'a' and 'href'.  Commonly used so allowing this high level method
+            
+        if listFind[i] == "linkandtext"
 
         i += 1
       
