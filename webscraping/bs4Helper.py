@@ -17,38 +17,34 @@ class HtmlHelper:
     def set_soup(self, htmlstring):
         self.mysoup = bs4.BeautifulSoup(htmlstring)
     
-    def get_links_and_linktext_from_html(self, stringhtml):
+    def get_links_and_linktext_from_html(self):
         thisdict = {}
         for item in self.mysoup:
             if link.has_attr('href'):
                 thisdict[link.text] = link['href']
-        self.mysoup = thisdict
+        return thisdict
     
     def get_links_from_html(self):
-        thislist = []
-        for link in :
+        for link in self.mysoup:
             if link.has_attr('href'):
                 thislist.append(link['href'])
         self.mysoup = thislist
+        return self.mysoup
     
     def get_elems_from_html(findel):
-        elemlist = []
-        for myelem in bs4.BeautifulSoup(stringhtml, parseOnlyThese=bs4.SoupStrainer(findel)):
-            elemlist.append(myelem)
-        self.mysoup = elemlist
+        self.mysoup = self.mysoup.findAll(findel)
+        return self.mysoup
 
      ## Get class items from html
     def get_classes_from_html(self, findclass):
-        soup = bs4.BeautifulSoup(stringhtml)
-        items = soup.findAll(True,{'class':findclass})
-        self.mysoup = items
+        self.mysoup = soup.findAll(True,{'class':findclass})
+        return self.mysoup
         
         
      ## Get ID from html
     def get_ids_from_html(self, findid):
-        soup = bs4.BeautifulSoup(stringhtml)
-        items = soup.findAll(True,{'id':findid})
-        self.mysoup = items
+        self.mysoup = soup.findAll(True,{'id':findid})
+        return self.mysoup
 
 
     ## this will error control, pass arguments to function switch
@@ -69,19 +65,20 @@ class HtmlHelper:
         ## end result is item, list of items, or dict
         ## NOTE: dict must control for dupllicates
         ## NOTENOTENOTE:  MUST MAKE SOUP CLASSLEVEL, FIRST TURN TO Soup Then Run through
+      burner = ""
       i=0
       for i < len(listexecute):
         if listFind[i] == "class":
-            get_classes_from_html(listfind[i])
+            burner = get_classes_from_html(listfind[i])
 
         if listFind[i] == "id":
-            get_ids_from_html(listfind[i])
+            burner = get_ids_from_html(listfind[i])
 
-        if listFind[i] == "elems":
-            get_elems_from_html(listfind[i])
+        if listFind[i] == "elem":
+            burner = get_elems_from_html(listfind[i])
 
         if listFind[i] == "link":  ## defined as 'a' and 'href'.  Commonly used so allowing this high level method
-            get_links_from_html()
+            burner = get_links_from_html()
 
         i += 1
       return self.mysoup                                        
