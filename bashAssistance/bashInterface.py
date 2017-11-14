@@ -16,6 +16,7 @@ class BashHelper:
     def runBashCommand(bashCommand):
         process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
+        return output
 
     def killProcess(pidfile_path):
         try:
