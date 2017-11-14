@@ -20,6 +20,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 12. Social media: facebook, linkedin, wechat(?), twitter
 13. ~~Read and write to txt, csv ( including any necessary unicode conversions, etc)~~
 14. Common Bash assistance library
+15. Retry script:  pass function and number of tries or time to a function that recurs if error.
 
 ### Skills to Advance
 
