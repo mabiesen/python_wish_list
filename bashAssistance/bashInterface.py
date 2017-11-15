@@ -56,9 +56,27 @@ class BashHelper:
         for i in filelist:
             self.scp_file(i, ipaddr, user, password)
     
-    ## NOTE:  FTP did not work, try with scp
-    def scp_file(self, fromfilepathfile, tofilepath, toipaddr, fromipaddr, user, password):
-        filename, filedir = os.path.split(fullfilepath)
-        child = pexpect.spawn (user + "@" + ipaddr + ":" + fullfilepath + " " + tofilepath + filename)
-        child.expect ("User " + "(" + ipaddr + "'s password:")
-        child.sendline (password)
+    ## NOTE:  FTP did not work, try with scp, did not work so tried with paramiko, did not work
+    ## DOES NOT WORK
+    def scp_file(self,username,pswd, files, remotepath, localpath='./', server='local'):
+        paramiko.util.log_to_file('/tmp/paramiko.log')
+        paramiko.util.load_host_keys(os.path.expanduser('~/.ssh/known_hosts'))
+
+        files = []
+
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(
+                    paramiko.AutoAddPolicy())
+        ssh.connect(server, username=username, password=pswd)
+        sftp = ssh.open_sftp()
+
+        for file in files:
+            file_remote = remotepath + file
+            file_local = localpath + file
+
+            print file_remote + '>>>' + file_local
+
+            sftp.get(file_remote, file_local)
+
+        sftp.close()
+        ssh.close()
