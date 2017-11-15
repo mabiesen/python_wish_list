@@ -20,6 +20,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 12. ~~Read and write to txt, csv ( including any necessary unicode conversions, etc)~~
 13. ~~Common Bash assistance library~~
 14. Retry script:  pass function and number of tries or time or criteria to a function that recurs if error.
+15. Unify function and variable formatting in python scripts (?)
 
 ### Skills to Advance
 
