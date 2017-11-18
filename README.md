@@ -2,7 +2,7 @@
 
 ### Functionalities to Obtain
 
-List containing functionalities I would like to have, either through building my own packages or wrapping existing packages.  Code should be written with proper error handling, best practice conventions, etc.
+List containing functionalities I would like to have, either through building my own packages or wrapping existing packages.  Code should be written with proper error handling, best practice conventions, etc.  Upon completion, insure that all loops are optimized.
 
 Some of these I already have, some I do not.  Strike throughs indicate partially complete, bold strike throughs fully complete.
 
