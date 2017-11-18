@@ -2,7 +2,7 @@ import smtplib
 import imaplib
 
 
-class GmailHelper:
+class GmailClass:
 
   gmailuser = ""
   gmailpassword = ""
@@ -32,9 +32,9 @@ class GmailHelper:
       print 'successfully sent the mail'
     except:
       print "failed to send mail"
-          
-          
-         
+
+
+
   def read_email_from_gmail(self):
     try:
       mail = imaplib.IMAP4_SSL(SMTP_SERVER)
@@ -44,7 +44,7 @@ class GmailHelper:
       type, data = mail.search(None, 'ALL')
       mail_ids = data[0]
 
-      id_list = mail_ids.split()   
+      id_list = mail_ids.split()
       first_email_id = int(id_list[0])
       latest_email_id = int(id_list[-1])
 
@@ -62,4 +62,3 @@ class GmailHelper:
 
     except Exception, e:
       print str(e)
-    

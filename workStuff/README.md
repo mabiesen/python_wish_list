@@ -5,5 +5,9 @@ The following types of data collection are desired:
 2.  Sip conf collection, store in one folder with naming convention
 3.  Grep the log collection for key words (WARNING, ERROR, DISCONNECTED, heartbeat=false etc.)
 4.  Grep option to fetch last and traverse backwards; usually this is the data we want to see.
-5.  Logs collection: database heartbeat, asterisk call, 
+5.  Logs collection: database heartbeat, asterisk call,
 6.  
+
+
+
+Its been decided, classes will be created based upon topics frequently encountered.
