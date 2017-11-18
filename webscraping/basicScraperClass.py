@@ -6,17 +6,17 @@
 
 import bs4
 
-class BasicHtmlHelper:
-    
+class BasicScraperClass:
+
     mysoup = ""
-    
+
     def __init__(htmlstring):
         print("HtmlHelper initialized")
         set_soup(hmtmlstring)
-        
+
     def set_soup(self, htmlstring):
         self.mysoup = bs4.BeautifulSoup(htmlstring)
-    
+
     ## lowest level, returns dict, NOT ALLOWED IN SWITCH
     def get_links_and_linktext_from_html(self):
         thisdict = {}
@@ -24,13 +24,13 @@ class BasicHtmlHelper:
             if link.has_attr('href'):
                 thisdict[link.text] = link['href']
         return thisdict
-    
+
     def get_links_from_html(self):
         for link in self.mysoup.findAll('a'):
             if link.has_attr('href'):
                 thislist.append(link['href'])
         return thislist
-    
+
     def get_elems_from_html(self,findel):
         myreturn = self.mysoup.findAll(findel)
         return myreturn
@@ -39,8 +39,8 @@ class BasicHtmlHelper:
     def get_classes_from_html(self, findclass):
         myreturn = self.mysoup.findAll(True,{'class':findclass})
         return myreturn
-        
-        
+
+
      ## Get ID from html
     def get_ids_from_html(self, findid):
         myreturn = self.mysoup.findAll(True,{'id':findid})
@@ -48,7 +48,7 @@ class BasicHtmlHelper:
 
 
     ## this will error control, pass arguments to function switch
-    
+
     def html_search_several(listexecute, listfind, thishtml=""):
         if thishtml != "":
             set_soup(thishtml)
@@ -56,8 +56,8 @@ class BasicHtmlHelper:
             return "err"
         else:
             return function_switch(listexecute, listfind)
-    
-    
+
+
      ## Function switch
 
     def function_switch(self, listexecute, listfind):
@@ -78,9 +78,4 @@ class BasicHtmlHelper:
             burner = get_elems_from_html(listfind[i])
 
         i += 1
-      return self.mysoup                                        
-                                                       
-      
- 
- 
- 
+      return self.mysoup

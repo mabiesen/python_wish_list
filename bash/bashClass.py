@@ -11,10 +11,8 @@
 
 import subprocess
 import os
-import pexpect
-import paramiko
 
-class BashHelper:
+class BashClass:
 
     def __init__(self):
         print("bash helper initialized")

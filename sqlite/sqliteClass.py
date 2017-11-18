@@ -2,24 +2,24 @@ import sqlite3
 import sys
 
 
-class UseSqlite:
+class SqliteClass:
     con = None
     db = ""
 
     def __init__(self, thisdb=""):
         self.db = thisdb
 
-    def createDatabase(self, dbfile):
+    def create_database(self, dbfile):
         try:
             self.con = sqlite3.connect(dbfile)
 
         except sqlite3.Error, e:
-            self.handleError(e)
+            self.handle_error(e)
 
         finally:
             self.closeConnection()
 
-    def retrieveMultipleRows(self, myquery):
+    def retrieve_multiple_rows(self, myquery):
         self.con = sqlite3.connect(self.db)
         try:
             cur = self.con.cursor()
@@ -27,13 +27,13 @@ class UseSqlite:
             data = cur.fetchall()
 
         except sqlite3.Error, e:
-            self.handleError(e)
+            self.handle_error(e)
 
         finally:
             self.closeConnection()
             return data
 
-    def retrieveOneRow(self, myquery):
+    def retrieve_one_row(self, myquery):
         data = ""
         self.con = sqlite3.connect(self.db)
         try:
@@ -42,31 +42,31 @@ class UseSqlite:
             data = cur.fetchone()
 
         except sqlite3.Error, e:
-            self.handleError(e)
+            self.handle_error(e)
 
         finally:
             self.closeConnection()
             return data
 
 
-    def createTable(self, tablecommand):
+    def create_table(self, tablecommand):
         self.con = sqlite3.connect(self.db)
         try:
             self.con.execute(tablecommand)
 
         except sqlite3.Error, e:
-            self.handleError(e)
+            self.handle_error(e)
 
         finally:
             self.closeConnection()
-            
-    def getTableHeaders(self, mytable):
+
+    def get_table_headers(self, mytable):
         sqlstatement = "Select * from " + mytable + ";"
         row = self.retrieveOneRow(sqlstatement)
         names = row.keys()
         return names
 
-    def insertFullRows(self, tablename, myrowslistoftuples):
+    def insert_full_rows(self, tablename, myrowslistoftuples):
         ## should allow for 1 row or multiple
         if type(myrowslistoftuples[0]) is tuple:
             numquestionmarks = len(myrowslistoftuples[0])
@@ -83,7 +83,7 @@ class UseSqlite:
             self.con.commit()
 
         except sqlite3.Error, e:
-            self.handleError(e)
+            self.handle_error(e)
 
         finally:
             self.closeConnection()
@@ -103,6 +103,6 @@ class UseSqlite:
             self.con.close()
 
     @staticmethod
-    def handleError(e):
+    def handle_error(e):
         print "Error %s:" % e.args[0]
         sys.exit(1)

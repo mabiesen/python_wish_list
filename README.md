@@ -6,6 +6,8 @@ List containing functionalities I would like to have, either through building my
 
 Some of these I already have, some I do not.  Strike throughs indicate partially complete, bold strike throughs fully complete.
 
+Conventions are to be as follow:  underscore separation for methods, capitalized camel case class, lowercased camel cased files (makes for easier directory traversing)
+
 1. **~~Get GPS coordinates from address~~** , IP
 2. ~~Send email, retrieve email from inboxes~~ , get IP and location of sender
 3. Interact with databases: mysql, ~~sqlite~~, mongo(with included json conversion as its always necessary), etc.
@@ -25,7 +27,7 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 ### Skills to Advance
 
 1. Django
-2. Map, set, list, itertootls, 
+2. Map, set, list, itertootls,
 3. Matplotlib
 
 ### Stuff for work
@@ -35,10 +37,10 @@ Some of these I already have, some I do not.  Strike throughs indicate partially
 
 ### Qpython scripts
 
-1. 
+1.
 
 
 ### Just good fun
 
 1. Python library of interesting things to do in minecraft for Raspberry Pi
-2. 
+2.
