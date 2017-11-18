@@ -88,6 +88,10 @@ class SqliteClass:
         finally:
             self.closeConnection()
 
+    # Usefulness for excel
+    def write_table_to_csv():
+        return
+
     @staticmethod
     def parameterized(numq):
         questionmarks = "("
