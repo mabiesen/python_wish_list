@@ -6,4 +6,6 @@
 ## should allow for pulling all global variables
 ## option to count number of global variables
 
-## SHOULD BE A CLI BASED TOOL WITH PRINT OUTPUT EXCLUSIVELY
+## move through all files in directory and perform one or more of the above operations
+
+## SHOULD BE A CLI BASED TOOL WITH PRINT OUTPUT.  
