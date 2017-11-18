@@ -1,4 +1,5 @@
 import paramiko
+import scp
 
 def createSSHClient(server, port, user, password):
     client = paramiko.SSHClient()
@@ -8,4 +9,7 @@ def createSSHClient(server, port, user, password):
     return client
 
 ssh = createSSHClient('192.168.1.78', 22, 'pi', 'raspberry')
-scp = SCPClient(ssh.get_transport())
+myscp = scp.SCPClient(ssh.get_transport())
+
+myscp.get('/home/pi/Documents/testme')
+myscp.close()
