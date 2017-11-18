@@ -50,3 +50,24 @@ class BashClass:
 
 
     ## check if directory exists
+
+
+
+## Kept this separate as best practice
+'''
+There are two best practices to follow when using this method:
+Catch the exception (WindowsError, OSError) on invalid path. If the exception is thrown, do not perform any recursive operations, especially destructive ones. They will operate on the old path and not the new one.
+Return to your old directory when you're done. This can be done in an exception-safe manner by wrapping your chdir call in a context manager, like Brian M. Hunt did in his answer.
+Changing the current working directory in a subprocess does not change the current working directory in the parent process. This is true of the Python interpreter as well. You cannot use os.chdir() to change the CWD of the calling process.
+'''
+class ChangeDirClass:
+    """Context manager for changing the current working directory"""
+    def __init__(self, newPath):
+        self.newPath = os.path.expanduser(newPath)
+
+    def __enter__(self):
+        self.savedPath = os.getcwd()
+        os.chdir(self.newPath)
+
+    def __exit__(self, etype, value, traceback):
+        os.chdir(self.savedPath)
