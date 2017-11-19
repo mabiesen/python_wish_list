@@ -6,7 +6,7 @@ class MattsMinecraft:
 
     playerpos = []
     mc = ''
-    standard_block = ""
+    standard_brick = ""
     tele_position = []
 
     def __init__ (self):
@@ -26,58 +26,53 @@ class MattsMinecraft:
     def teleport(self,locindex):
         print("TELEPORTING!!!")
         self.get_position()
-        x = self.tele_position[0] - self.playerpos[0] + self.tele_position[0]
-        y = self.tele_position[1] - self.playerpos[1] + self.tele_position[1]
-        z = self.tele_position[2] - self.playerpos[2] + self.tele_position[2]
+        x = self.playerpos[0] - self.tele_position[0] + self.playerpos[0]
+        y = self.playerpos[1] - self.tele_position[1] + self.playerpos[1]
+        z = self.playerpos[2] - self.tele_position[2] + self.playerpos[2]
         self.mc.player.setPos(x, y, z)
 
     def build_a_brick(self, x, y, z):
-        self.mc.setBlock(x, y, z, self.standard_block)
+        self.mc.setBlock(x, y, z, self.standard_brick)
 
-    # all columns start at player z height
-    def standard_column(self,height,x,z):
-        print("making a column")
-        brickpos = self.playerpos[1]
-        endpos = brickpos + height
-        while brickpos <= endpos:
-            self.build_a_brick(x,brickpos,z)
-            brickpos = brickpos + 1
+    #zaway default to 1 so that you don't build the block on yourself
+    def build_a_block(self, width, height, depth, xaway, zaway=1):
+        x =  self.playerpos[0]
+        y = self.playerpos[1]
+        z = self.playerpos[2]
+        self.mc.setBlocks(x+xaway, y, z+zaway, x+width, y+height, z+depth, self.standard_brick)
 
-    def standard_wall(self, x, z, direction, length, height):
-        print("making a wall")
-        if (direction = "z"):
-            zpos = z
-            zend = z + length
-            while zpos <= zend:
-                self.standard_column(height, x, zpos)
-                zpos = zpos + 1
-        if (direction = "x"):
-            xpos = x
-            xend = x + length
-            while xpos <= xend:
-                self.standard_column(height, xpos, z)
-                xpos = xpos + 1
-
-    def standard_roof(self):
-        print("making a roof")
-
-    def standard_tunnel(self):
-        print("making a tunnel")
-
-    def standard_building(self):
+    def building(self, width, height, depth, xaway, zaway):
         print("making a building")
+        self.build_a_block(width,height,depth, xaway, zaway)
+        origbrick = self.standard_brick
+        self.standard_brick = 0
+        self.build_a_block(width-1,height-1,depth-1, xaway+1, zaway+1)
+        self.standard_brick = origbrick
 
-    def standard_stairs(self):
+    # for each loop, increase height and increase xaway
+    def stairs(self,dist):
         print("making some stairs")
+        x = self.playerpos[0]
+        width = 1
+        depth = 2
+        height = 1
+        xaway = 1
+        zaway = 0
+        truedist = x + dist
+        while x < truedist:
+            self.build_a_block(width,height,depth,xaway,zaway)
+            xaway += 1
+            height += 1
 
-    def standard_ladder(self):
+    # build as you climb
+    def ladder(self):
         print("building a ladder")
 
     def print_variables(self):
         print("These are our variables: ")
         print("playerpos: " + self.playerpos)
         print("tele_position: " + self.tele_position)
-        print("standard_block: " + self.standard_block)
+        print("standard_brick: " + self.standard_brick)
         print("")
 
     def print_methods(self):
@@ -86,11 +81,12 @@ class MattsMinecraft:
         def set_tele_position(self):\n\
         def teleport(self,locindex):\n\
         def build_a_brick(self, x, y, z):\n\
-        def standard_column(self,height,x,z):\n\
-        def standard_wall(self, x, z, direction, length, height):\n\
+        def build_a_block(self, width, height, depth, xaway, zaway=1):\n\
+        def building(self, width, height, depth, xaway, zaway):\n\
+        def stairs(self,dist):\n\
         ")
 
-    def print_block_options(self):
+    def print_brick_options(self):
         print("These are the block options: \n\
             AIR                   0\n\
             STONE                 1\n\
@@ -163,4 +159,29 @@ class MattsMinecraft:
             MELON               103\n\
             FENCE_GATE          107\n\
             GLOWING_OBSIDIAN    246\n\
-            NETHER_REACTOR_CORE 247\n\")
+            NETHER_REACTOR_CORE 247\n")
+
+# WITH SETBLOCK, THESE ARE NOT NECESSARY
+# all columns start at player z height
+# def standard_column(self,height,x,z):
+#     print("making a column")
+#     brickpos = self.playerpos[1]
+#     endpos = brickpos + height
+#     while brickpos <= endpos:
+#         self.build_a_brick(x,brickpos,z)
+#         brickpos = brickpos + 1
+#
+# def standard_wall(self, x, z, direction, length, height):
+#     print("making a wall")
+#     if (direction = "z"):
+#         zpos = z
+#         zend = z + length
+#         while zpos <= zend:
+#             self.standard_column(height, x, zpos)
+#             zpos = zpos + 1
+#     if (direction = "x"):
+#         xpos = x
+#         xend = x + length
+#         while xpos <= xend:
+#             self.standard_column(height, xpos, z)
+#             xpos = xpos + 1
