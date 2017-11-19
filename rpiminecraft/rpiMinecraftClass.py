@@ -68,6 +68,12 @@ class MattsMinecraft:
     def ladder(self):
         print("building a ladder")
 
+    def behind_as_you_walk():
+        print("autoline")
+
+    def ladder_as_you_climb():
+        print("auto ladder")
+
     def print_variables(self):
         print("These are our variables: ")
         print("playerpos: " + self.playerpos)
