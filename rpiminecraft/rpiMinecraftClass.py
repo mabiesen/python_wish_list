@@ -34,6 +34,7 @@ class MattsMinecraft:
     def build_a_brick(self, x, y, z):
         self.mc.setBlock(x, y, z, self.standard_block)
 
+    # all columns start at player z height
     def standard_column(self,height,x,z):
         print("making a column")
         brickpos = self.playerpos[1]
@@ -42,8 +43,20 @@ class MattsMinecraft:
             self.build_a_brick(x,brickpos,z)
             brickpos = brickpos + 1
 
-    def standard_wall(self, xloc, zloc, direction, length, height):
+    def standard_wall(self, x, z, direction, length, height):
         print("making a wall")
+        if (direction = "z"):
+            zpos = z
+            zend = z + length
+            while zpos <= zend:
+                self.standard_column(height, x, zpos)
+                zpos = zpos + 1
+        if (direction = "x"):
+            xpos = x
+            xend = x + length
+            while xpos <= xend:
+                self.standard_column(height, xpos, z)
+                xpos = xpos + 1
 
     def standard_roof(self):
         print("making a roof")
@@ -74,8 +87,8 @@ class MattsMinecraft:
         def teleport(self,locindex):\n\
         def build_a_brick(self, x, y, z):\n\
         def standard_column(self,height,x,z):\n\
+        def standard_wall(self, x, z, direction, length, height):\n\
         ")
-        print("")
 
     def print_block_options(self):
         print("These are the block options: \n\
@@ -150,5 +163,4 @@ class MattsMinecraft:
             MELON               103\n\
             FENCE_GATE          107\n\
             GLOWING_OBSIDIAN    246\n\
-            NETHER_REACTOR_CORE 247")
-            print("")
+            NETHER_REACTOR_CORE 247\n\")
