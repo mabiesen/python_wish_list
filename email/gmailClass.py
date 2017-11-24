@@ -2,6 +2,8 @@ import smtplib
 import imaplib
 
 
+# also need a method to obtain email header information!!!!
+
 class GmailClass:
 
   gmailuser = ""

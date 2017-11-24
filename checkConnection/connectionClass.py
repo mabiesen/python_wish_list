@@ -10,8 +10,8 @@ class ConnectionClass:
         print("Initiating connection class")
         self.local_ip=socket.gethostbyname(socket.gethostname())
 
-    def print_local_ip(self):
-        print(self.local_ip)
+    def get_local_ip(self):
+        return self.local_ip
 
     def scan_ip_port_range_tcp(self, this_ip, port_range='0-65535'):
         nm = nmap.PortScanner()
