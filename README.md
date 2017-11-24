@@ -25,6 +25,7 @@ Conventions are to be as follow:  underscore separation for methods, capitalized
 15. Unify function and variable formatting in python scripts (?)
 16. Django
 17. Learn pandas library
+18. GUI options other than Tkinter
 
 
 ### Stuff for work
