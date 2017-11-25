@@ -10,6 +10,7 @@ class SqliteClass:
         self.db = thisdb
 
     def create_database(self, dbfile):
+        self.db = thisdb
         try:
             self.con = sqlite3.connect(dbfile)
 
