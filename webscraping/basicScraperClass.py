@@ -12,7 +12,7 @@ class BasicScraperClass:
 
     def __init__(htmlstring):
         print("HtmlHelper initialized")
-        set_soup(hmtmlstring)
+        set_soup(htmlstring)
 
     def set_soup(self, htmlstring):
         self.mysoup = bs4.BeautifulSoup(htmlstring)
@@ -26,6 +26,7 @@ class BasicScraperClass:
         return thisdict
 
     def get_links_from_html(self):
+        thislist = []
         for link in self.mysoup.findAll('a'):
             if link.has_attr('href'):
                 thislist.append(link['href'])
