@@ -12,7 +12,7 @@ class financeData:
     tickers = []
     #this is raw return
     panel_data = ''
-    #this is the data by weekday, extracted using the 'extract_panel_data' function
+    #this is specified the data by weekday, extracted using the 'extract_panel_data' function
     extracted_data = ''
 
     def __init__(self):
@@ -51,12 +51,13 @@ class financeData:
         # Plot everything by leveraging the very powerful matplotlib package
         fig = plt.figure()
         ax = fig.add_subplot(1,1,1)
-        ax.plot(msft.index, msft, label=whichticker)
+        ax.plot(tickerdata.index, tickerdata, label=whichticker)
         ax.plot(short_rolling.index, short_rolling, label='20 days rolling')
         ax.plot(long_rolling.index, long_rolling, label='100 days rolling')
         ax.set_xlabel('Date')
         ax.set_ylabel('Closing price ($)')
         ax.legend()
+        plt.show()
 
     def print_data_tail(self,timeframe):
         print(self.extracted_data.tail(timeframe))
