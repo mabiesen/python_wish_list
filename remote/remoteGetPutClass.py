@@ -44,13 +44,15 @@ class RemoteGetPutClass:
         myscp.close()
 
     def get_files(filePathList):
+        myscp = create_transport()
         for f in filePathList:
             try:
-                get_file(f)
+                myscp.get(f)
             except:
                 print("get_file not completed for: " + f)
         print("Done getting files")
         print(" ")
+        myscp.close()
 
     def put_file(localFilePath,remoteFilepath):
         myscp = create_transport()

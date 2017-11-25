@@ -26,7 +26,7 @@ Conventions are to be as follow:  underscore separation for methods, capitalized
 16. Django
 17. Learn pandas library
 18. GUI options other than Tkinter
-
+19. Host a python service
 
 ### Stuff for work
 
