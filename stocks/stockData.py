@@ -62,6 +62,11 @@ class financeData:
     def print_data_tail(self,timeframe):
         print(self.extracted_data.tail(timeframe))
 
+
+
+
+
+
 # # Define the instruments to download. We would like to see Apple, Microsoft and the S&P500 index.
 # tickers = ['BABA', 'BBY']
 #
