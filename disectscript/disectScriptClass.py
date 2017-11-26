@@ -22,7 +22,7 @@ def get_file_lines(filename):
   fh = open(filename, "r")
   return fh.readlines()
 
-def get_defs(fileLines):
+def get_global_defs(fileLines):
     for f in fileLines:
         if re.match(r"^def\s", f):
             functionList.append(f)
@@ -35,22 +35,22 @@ def get_global_vars(fileLines):
 
 @click.command()
 @click.option('--file', help='python file to dissect')
-@click.option('--which', default="all", help='choose the data you would like to collect. all for all, g for globals, f for function')
-def summary(file,which):
+def summary(file):
    '''Simple program to group python defs/classnames/globalvars'''
    fileLines = get_file_lines(file)
-   get_defs(fileLines)
+   get_global_defs(fileLines)
    get_global_vars(fileLines)
 
-   if which == "all":
-       print("")
-       print("FUNCTIONS:")
-       for i in functionList:
-           print(i)
-       print("")
-       print("GLOBAL VARIABLES:")
-       for i in globalVarList:
-           print(i)
+   print("")
+   print("-------FILE SUMMARY FOR " + file + "-------")
+   print("")
+   print("GLOBAL FUNCTIONS:")
+   for i in functionList:
+       print(i.rstrip())
+   print("")
+   print("GLOBAL VARIABLES:")
+   for i in globalVarList:
+       print(i.rstrip())
 
 if __name__ == '__main__':
    summary()
