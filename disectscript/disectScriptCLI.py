@@ -12,7 +12,7 @@
 
 
 import click
-from disectScriptFunctionality import *
+from disectScriptFunctionality import main_func
 
 @click.command()
 @click.option('--file', help='python file to dissect')
