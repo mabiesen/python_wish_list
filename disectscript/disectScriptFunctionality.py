@@ -1,17 +1,3 @@
-## should allow for pulling all classnames from scripts
-## option to pull all methods
-
-## should allow for pulling all function initiations
-
-## should allow for pulling all global variables
-## option to count number of global variables
-
-## move through all files in directory and perform one or more of the above operations
-
-## SHOULD BE A CLI BASED TOOL WITH PRINT OUTPUT.
-
-
-import click
 import re
 import os
 
@@ -40,16 +26,7 @@ def get_global_vars(fileLines):
         if re.match(r"^\w{1,30}\b\s=", f) or re.match(r"^\w{1,30}\b=", f):
             globalVarList.append(f.rstrip())
 
-@click.command()
-@click.option('--file', help='python file to dissect')
-def summary(file):
-   fileLines = get_file_lines(file)
-   get_global_defs(fileLines)
-   get_global_vars(fileLines)
-   get_global_imports(fileLines)
-
-   filename = os.path.basename(file)
-
+def print_all(filename):
    print("")
    print("-------FILE SUMMARY FOR " + filename + "-------")
    print("")
@@ -64,6 +41,3 @@ def summary(file):
    print("GLOBAL VARIABLES:")
    for i in globalVarList:
        print(i)
-
-if __name__ == '__main__':
-   summary()
