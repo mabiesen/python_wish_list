@@ -17,14 +17,7 @@ from disectScriptFunctionality import *
 @click.command()
 @click.option('--file', help='python file to dissect')
 def summary(file):
-   fileLines = get_file_lines(file)
-   get_global_defs(fileLines)
-   get_global_vars(fileLines)
-   get_global_imports(fileLines)
-
-   filename = os.path.basename(file)
-
-   print_all(filename)
+    main_func(file)
 
 if __name__ == '__main__':
    summary()
