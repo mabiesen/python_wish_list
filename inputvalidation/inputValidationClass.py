@@ -2,6 +2,9 @@ import re
 import datetime
 import urlparse
 
+'''this is first level validation, validates format of Input
+Existence checks should occur after first level validation as they
+require calls to url, email, system'''
 
 class validateInput:
 
@@ -31,3 +34,9 @@ class validateInput:
             return True
         except ValueError:
             return False
+
+    def validate_file(filepath):
+        print(filepath)
+
+    def validate_directory(directory):
+        print(directory)
