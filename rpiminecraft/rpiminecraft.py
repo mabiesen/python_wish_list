@@ -4,9 +4,9 @@ from mcpi.minecraft import Minecraft
 
 class MattsMinecraft:
 
-    playerpos = []
+    playerpos = ''
     mc = ''
-    standard_brick = ""
+    standard_brick = 1
     tele_position = []
 
     def __init__ (self):
@@ -15,8 +15,8 @@ class MattsMinecraft:
 
     def get_position(self):
         print("getting position")
-        self.playerpos = mc.player.getPos()
-        print("x: " + self.pos[0] + "y: " + self.pos[1] + "z: " + self.pos[2])
+        self.playerpos = self.mc.player.getPos()
+        print("x: " + str(self.playerpos.x) + "y: " + str(self.playerpos.y) + "z: " + str(self.playerpos.z))
 
     def set_tele_position(self):
         self.get_position()
@@ -26,33 +26,35 @@ class MattsMinecraft:
     def teleport(self,locindex):
         print("TELEPORTING!!!")
         self.get_position()
-        x = self.playerpos[0] - self.tele_position[0] + self.playerpos[0]
-        y = self.playerpos[1] - self.tele_position[1] + self.playerpos[1]
-        z = self.playerpos[2] - self.tele_position[2] + self.playerpos[2]
+        x = self.playerpos.x - self.tele_position.x + self.playerpos.x
+        y = self.playerpos.y - self.tele_position.y + self.playerpos.y
+        z = self.playerpos.z - self.tele_position.z + self.playerpos.z
         self.mc.player.setPos(x, y, z)
 
     def build_a_brick(self, x, y, z):
         self.mc.setBlock(x, y, z, self.standard_brick)
 
     #zaway default to 1 so that you don't build the block on yourself
-    def build_a_block(self, width, height, depth, xaway, zaway=1):
-        x =  self.playerpos[0]
-        y = self.playerpos[1]
-        z = self.playerpos[2]
-        self.mc.setBlocks(x+xaway, y, z+zaway, x+width, y+height, z+depth, self.standard_brick)
+    def block_from_self(self):
+	self.get_position()
+	self.build_a_block(self.playerpos.x, self.playerpos.y, self.playerpos.z, 10.0,10.0,10.0)
+	
 
-    def building(self, width, height, depth, xaway, zaway):
+    def build_a_block(self,x,y,z, width, height, depth):
+        self.mc.setBlocks(x, y, z, x+width, y+height, z+depth, self.standard_brick)
+
+    def building(self, width, height, depth):
         print("making a building")
-        self.build_a_block(width,height,depth, xaway, zaway)
+        self.build_a_block(self.playerpos.x + 1, self.playerpos.y, self.playerpos.z + 1, width,height,depth)
         origbrick = self.standard_brick
         self.standard_brick = 0
-        self.build_a_block(width-1,height-1,depth-1, xaway+1, zaway+1)
+        self.build_a_block(self.playerpos.x + 2, self.playerpos.y, self.playerpos.z, width-1,height-1,depth-1)
         self.standard_brick = origbrick
 
     # for each loop, increase height and increase xaway
     def stairs(self,dist):
         print("making some stairs")
-        x = self.playerpos[0]
+        x = self.playerpos.x
         width = 1
         depth = 2
         height = 1
@@ -60,9 +62,10 @@ class MattsMinecraft:
         zaway = 0
         truedist = x + dist
         while x < truedist:
-            self.build_a_block(width,height,depth,xaway,zaway)
+            self.build_a_block(x,width,height,depth,xaway,zaway)
             xaway += 1
             height += 1
+	    truedist += 1
 
     # build as you climb
     def ladder(self):
