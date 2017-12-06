@@ -5,7 +5,7 @@ import pandas as pd
 class financeData:
 
     #pre-defined
-    data_source = 'google'
+    data_source = 'yahoo'
     #these are the set user inputs
     start_date = ''
     end_date = ''
@@ -19,8 +19,8 @@ class financeData:
         print("Finance data class initialized.")
 
     def fetch_and_extract(self,tickers,start_date,end_date,datatype):
-        fetch_ticker_data(tickers,start_date,end_date)
-        extract_panel_data(datatype)
+        self.fetch_ticker_data(tickers,start_date,end_date)
+        self.extract_panel_data(datatype)
 
     def fetch_ticker_data(self, tickers, start_date, end_date):
         self.tickers = tickers
@@ -31,10 +31,10 @@ class financeData:
         #Clear extracted data to avoid confusion
         self.extracted_data = ''
 
-    def extract_panel_data(self,datatype):
+    def extract_panel_data(self):
         # 'Close' for getting closing prices. This will return a Pandas DataFrame
         # The index in this DataFrame is the major index of the panel_data.
-        thisdata = self.panel_data.ix[datatype]
+        thisdata = self.panel_data.ix['Close']
         all_weekdays = pd.date_range(start=self.start_date, end=self.end_date, freq='B')
         self.extracted_data = thisdata.reindex(all_weekdays)
 
