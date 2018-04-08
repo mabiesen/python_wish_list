@@ -12,13 +12,25 @@ class Mysql:
         # you must create a Cursor object. It will let
         #  you execute all the queries you need
         self.cur = self.db.cursor()
+        
+        
+    def print_all_data_in_table(self, tablename):
+        # Use all the SQL you like
+        self.cur.execute("SELECT * FROM " + tablename)
+
+        # print all the first cell of all the rows
+        for row in self.cur.fetchall():
+            for x in range(0,len(row)):
+                print(row[x])
+            print("\n\n")
+            
 
     # data is provided as an object
     def insert_into_links_table(self,tablename,data):
         query_placeholders = ', '.join(['%s'] * len(data))
         query_columns = ', '.join(list(data.keys()))
         try:
-           statement = ''' INSERT INTO table (%s) VALUES (%s) ''' %(query_columns, query_placeholders)
+           statement = ''' INSERT INTO %s (%s) VALUES (%s) ''' %(tablename, query_columns, query_placeholders)
            self.cur.execute(statement, list(data.values()))
            self.db.commit()
         except Exception as e:
